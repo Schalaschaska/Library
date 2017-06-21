@@ -1,0 +1,95 @@
+html, body { 
+background-image:url(design_ps_templates_25.jpg);
+min-height: 100%;
+background-repeat: no-repeat;
+background-size: 100%;
+overflow: hidden;
+margin: 0 auto;
+height: 100%;
+ }
+
+.middle_block {     /* стиль для центрального блока */	
+	margin: 0 auto;
+	width: 1000px;
+	min-height: 100%;
+	
+}
+
+.header {           /* стиль для шапки сайта */
+	padding: 20px 10px;
+	background: url(b.jpg);
+	height: 130px;
+	text-align: center;
+	
+
+	
+	
+	
+}
+   .left_v{
+	
+	text-align:center;
+	position: relative;
+	width: 	180px;
+	padding: 10px;
+	background: url(s.jpg);
+	min-height:calc(100vh - 300px);
+	
+	
+}
+.right_v {
+
+	text-align:center;
+	position: relative;
+	width: 150px;
+	padding: 10px;
+	background: url(s.jpg);
+	min-height:calc(100vh - 265px);
+}
+.left {           /* стиль для левого блока */
+	float: left;
+	position: relative;
+	width: 190px;
+	padding: 10px;
+	background: url(s.jpg);
+	min-height:calc(100vh - 245px);
+	border: 1px solid black;
+	
+}
+
+.content {           /* стиль для контента сайта */
+	float: left;
+	position: relative;
+	width: 566px;
+	padding: 10px;
+	background: url(b.jpg);
+	min-height:calc(100vh - 243px);
+	
+}
+
+.right {           /* стиль для правого блока */
+	float: right;
+	position: relative;
+	width: 180px;
+	padding: 10px;
+	background: url(s.jpg);
+	min-height:calc(100vh - 274px);
+	border: 1px solid black;
+}
+
+.footer 
+{           /* стиль для подавла сайта */
+	clear: both;
+	padding: 20px 10px;
+	background: url(s.jpg);
+	height: 100px;
+	text-align: left;
+	margin:0;
+	min-height:calc(100vh - 300px);
+	
+}
+
+a:hover 
+{
+	color:red;
+}
