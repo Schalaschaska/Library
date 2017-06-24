@@ -52,6 +52,7 @@ else
 				print "<tr>\n";
 				print "<td bgcolor=#FFFFFF><b>ID</b></td>\n";
 				print "<td bgcolor=#FFFFFF><b>Name</b></td>\n";
+				
 				print "</tr>\n";
 				while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
         print "\t<tr>\n";
@@ -81,6 +82,15 @@ else
 				<p class="submit"><input class="button" id="genre" name= "genre" type="submit" value="Add"></p>
 					  
 				 </form>
+				 
+				 
+				 <form action="genre.php" id="delform" method="post"name="delform">
+				 <p><label for="user_login">Genre<br>
+				 <input class="input" id="del" name="del"size="32"  type="number" value=""></label></p>
+				<p class="submit"><input class="button" id="d_l" name= "d_l" type="submit" value="Del"></p>
+					  
+				 </form>
+				 
 <script type="text/javascript" language="JavaScript"><!--
 function hideContainer() {
 document.getElementById("addform").style.display = "none";
@@ -89,12 +99,21 @@ function showConatainer() {
 document.getElementById("addform").style.display = "";
 }
 </script>	
+<script type="text/javascript" language="JavaScript"><!--
+function hideContainer_() {
+document.getElementById("delform").style.display = "none";
+}
+function showConatainer_() {
+document.getElementById("delform").style.display = "";
+}
+</script>	
 <?php
 if($_SESSION["session_username"]=="admin")
 {
 ?>
 <script type="text/javascript">
 showConatainer();
+showConatainer_();
 </script>
 <?php
 }
@@ -103,6 +122,7 @@ else
 ?>
 <script type="text/javascript">
 hideContainer();
+hideContainer_();
 </script>
 <?php
 }	
@@ -141,22 +161,55 @@ if(isset($_POST["genre"]))
 else
 {
 }
+if(isset($_POST["d_l"]))
+{
+	if(!empty($_POST['del'])) 
+	{
+		$id= htmlspecialchars($_POST['del']);
+		$query_d=mysql_query("SELECT * FROM genre WHERE number='".$id."'");
+		$numrows_d=@mysql_num_rows($query_d);
+	
+	 $result_d = mysql_query("DELETE FROM genre WHERE number=$id");
+	if($result_d)
+{
+	$message = "Account Successfully Created";
+} else {
+ $message = "Failed to insert data information!";
+  }
+		
+	}
+}
+else
+{
+}
+
 	?>	
+	
+	<?php
+/*include("includes/conect_3.php");*/
+
+	?>
 				</div>
 				<div class="right">
 				<div class="right_v">
 				<a href="Search.php">Search</a><br>
 				<a href="Register.php">Register</a><br>
-				<a href="#">Clear</a>
+				<a href="gb.php">Guest book</a>
 				</div>
 				</div>
 			</div>
 			
-			<div class="footer">
-				<a href='#'>Clear</a>
+				<div class="footer">
+				<a href="https://vk.com/schalaschaska"><img src="vk.png" width="50" >
+				<a href="https://www.facebook.com/profile.php?id=100009377767154"><img src="facebook.png" width="50">
+				<a href="https://twitter.com/Mihanhlystow"><img src="twitter.png" width="50">
+				<a href="https://www.instagram.com/schalaschaska/"><img src="i.png" width="50" >
+				
+				
+				
 			<br>
 			<br>
-			<img src="sz.png">
+			
 
 				
 			</div>

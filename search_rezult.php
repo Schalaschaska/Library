@@ -32,7 +32,7 @@
 			$link = mysql_connect("$mysql_host", "$mysql_user", "$mysql_password")
 			or die("Could not connect : " . mysql_error());
 			mysql_select_db("$mysql_database") or die("Could not select database");
-			$query_2 = "SELECT * FROM genre order by number";
+			$query_2 = "SELECT * FROM books order by code";
 			$result_2 = mysql_query($query_2) or die("Query failed : " . mysql_error());
 				function search ($query)
 				{
@@ -48,7 +48,7 @@ if(!empty($query))
   else if(strlen($query) > 128){
     $text = '<p>длинный поисковый запрос.</p>';}
   else{ 
-    $sql = "SELECT * FROM genre WHERE Name LIKE '%$query%'";//имя таблицы и полей
+    $sql = "SELECT * FROM books WHERE name LIKE '%$query%' OR Autor LIKE '%$query%' OR genre LIKE '%$query%'";//имя таблицы и полей
     $result = mysql_query($sql); 
     $num = @mysql_num_rows($result); 
     if($num > 0)
@@ -58,8 +58,11 @@ if(!empty($query))
       $text .= ' найдено '.$num.' совпадений</p>' ; 
       
       do{ 
-        $text .= '<h3>'.$row['Number'].'</h3>';//столбцы для вывода
+        $text .= '<h3>'.$row['Autor'].'</h3>';//столбцы для вывода
         $text .= '<p>'.nl2br($row['Name']).'</p>';
+		$text .= '<p>'.nl2br($row['Genre']).'</p>';
+		$text .= '<p>'.nl2br($row['Available']).'</p>';
+		
 		}
       while($row = mysql_fetch_assoc($result));
 	  } 
@@ -89,11 +92,17 @@ if(isset($_POST['query']))
 				</div>
 			</div>
 			
-			<div class="footer">
-				<a href='#'>Clear</a>
+				<div class="footer">
+				<a href="https://vk.com/schalaschaska"><img src="vk.png" width="50" >
+				<a href="https://www.facebook.com/profile.php?id=100009377767154"><img src="facebook.png" width="50">
+				<a href="https://twitter.com/Mihanhlystow"><img src="twitter.png" width="50">
+				<a href="https://www.instagram.com/schalaschaska/"><img src="i.png" width="50" >
+				
+				
+				
 			<br>
 			<br>
-			<img src="sz.png">
+			
 
 				
 			</div>
